@@ -9,26 +9,6 @@ var React = require('react-native');
 var sa = require("superagent");
 var Button = require('react-native-button');
 
-var ExampleComponent = React.createClass({
-  render() {
-    return (
-      <Button
-        style={styles.button}
-        styleDisabled={{color: 'red'}}
-        onPress={this._handlePress}
-      >
-        <Text>
-          Pressuj Me!
-        </Text>
-      </Button>
-    );
-  },
-
-  _handlePress(event) {
-    console.log('Pressed!');
-  },
-});
-
 var {
   AppRegistry,
   StyleSheet,
@@ -37,16 +17,21 @@ var {
 } = React;
 
 var FirstOne = React.createClass({
+  getInitialState: function() {
+    return {text: "Hello first pingwinek"};
+  },
+  showTime: function() {
+    this.setState({text: new Date().toString()});
+  },
+  componentDidMount: function() {
+    setInterval(this.showTime, 1000);
+  },
   render: function() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          {this.state.text}
         </Text>
-        <Text style={styles.instructions}>
-          Hello Pingwinek
-        </Text>
-        <ExampleComponent></ExampleComponent>
       </View>
     );
   }
