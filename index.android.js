@@ -8,6 +8,7 @@ var React = require('react-native');
 
 var sa = require("superagent");
 var Button = require('react-native-button');
+var moment = require("moment-timezone");
 
 var {
   AppRegistry,
@@ -21,7 +22,7 @@ var FirstOne = React.createClass({
     return {text: "Hello first pingwinek"};
   },
   showTime: function() {
-    this.setState({text: new Date().toString()});
+    this.setState({text: moment.tz("Europe/Warsaw").toString()});
   },
   componentDidMount: function() {
     setInterval(this.showTime, 1000);
