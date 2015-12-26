@@ -5,6 +5,29 @@
 'use strict';
 
 var React = require('react-native');
+
+var Button = require('react-native-button');
+
+var ExampleComponent = React.createClass({
+  render() {
+    return (
+      <Button
+        style={styles.button}
+        styleDisabled={{color: 'red'}}
+        onPress={this._handlePress}
+      >
+        <Text>
+          Pressuj Me!
+        </Text>
+      </Button>
+    );
+  },
+
+  _handlePress(event) {
+    console.log('Pressed!');
+  },
+});
+
 var {
   AppRegistry,
   StyleSheet,
@@ -20,11 +43,9 @@ var FirstOne = React.createClass({
           Welcome to React Native!
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit index.android.js
+          Hello Pingwinek
         </Text>
-        <Text style={styles.instructions}>
-          Shake or press menu button for dev menu
-        </Text>
+        <ExampleComponent></ExampleComponent>
       </View>
     );
   }
@@ -47,6 +68,15 @@ var styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  button: {
+    width: 100,
+    height: 60,
+    color: '#fff',
+    lineHeight: 20,
+    textAlign: 'center',
+    backgroundColor: '#49A8A2',
+    borderRadius: 20
+  }
 });
 
 AppRegistry.registerComponent('FirstOne', () => FirstOne);
